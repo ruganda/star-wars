@@ -1,0 +1,32 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended"],
+  "jsRules": {},
+  "rules": {
+    "arrow-parens": false,
+    "trailing-comma": false,
+    "interface-name": false,
+    "variable-name": false,
+    "only-arrow-functions": false,
+    "object-literal-sort-keys": false,
+    "max-classes-per-file": false,
+    "no-console": true,
+    "ban": [
+      true,
+      {
+        "name": ["describe", "only"],
+        "message": "Please do not exclude tests"
+      },
+      {
+        "name": ["it", "only"],
+        "message": "Please do not exclude tests"
+      },
+      {
+        "name": ["context", "only"],
+        "message": "Please do not exclude tests"
+      }
+    ],
+    "object-literal-key-quotes": false
+  },
+  "rulesDirectory": []
+}
