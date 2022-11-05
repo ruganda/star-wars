@@ -1,20 +1,23 @@
-import React, {createContext, useState} from 'react';
+import React, {createContext, ReactChild, ReactNode, useState} from 'react';
 import {
   useQuery
 } from "@apollo/client";
 import GET_PEOPLE_QUERY from '../queries';
+import { IContextValues } from '../interfaces'
 
+interface  IContextProps{
+  children: ReactChild| ReactNode,
+}
 
-
-export const PeopleContext = createContext();
+export const PeopleContext = createContext({} as IContextValues);
 
  
-const PeopleContextProvider =(props)=>{
+const PeopleContextProvider =(props: IContextProps)=>{
 
-  const [page, setPage] = React.useState(1);
-  const [name, setName] = React.useState('');
+  const [page, setPage] = useState(1);
+  const [name, setName] = useState('');
   const perPage = 10;
-  console.log(name, '----name in context')
+
 
   const { loading, error, data } = useQuery(GET_PEOPLE_QUERY, { 
     variables: {page, name: name}

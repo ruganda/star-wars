@@ -1,12 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-import PeopleList from './components/people';
+import PeopleList from './people';
 import PeopleContextProvider from './contexts/peopleContext';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+
 } from "react-router-dom";
 import ProfileDetails from './components/profileDetails';
 
@@ -22,13 +21,6 @@ function App() {
       </PeopleContextProvider>
     </Switch>
     </Router>
-
-
-    // <div className="App">
-    //   <PeopleContextProvider>
-    //     <PeopleList/>
-    //   </PeopleContextProvider>
-    // </div>
   );
 }
 

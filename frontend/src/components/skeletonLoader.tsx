@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 });
 
 
-function SkeletonLoader(props) {
+function SkeletonLoader(){
   const classes = useStyles();
   const { perPage } = useContext(PeopleContext);
   const itemsArray = [...Array(perPage).keys()]

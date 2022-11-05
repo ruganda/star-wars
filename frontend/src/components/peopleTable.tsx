@@ -7,7 +7,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   table: {
@@ -25,15 +25,16 @@ const useStyles = makeStyles({
   },
 });
 
+interface IProps{
+  data: Array<any>;
+}
 
-
-export default function PeopleTable({ data }) {
+export default function PeopleTable({ data }: IProps) {
   const classes = useStyles();
   const history = useHistory();
-  // use history to navigate to the the `/people${name}` route
-  const viewDetailsPage =(name)=>{
+  const viewDetailsPage = (name: string) => {
     history.push(`/people/${name}`);
-  }
+  };
 
   return (
     <TableContainer component={Paper} className={classes.rootContainer}>
@@ -49,16 +50,18 @@ export default function PeopleTable({ data }) {
         </TableHead>
         <TableBody>
           {data.map((person, index) => (
-            <TableRow className={classes.muiTableRow} key={person.name + index} onClick={()=>viewDetailsPage(person.name)}>
-              {/* <Link to={`/people/${person.name}`}> */}
-                <TableCell component="th" scope="row">
-                  {person.name}
-                </TableCell>
-                <TableCell>{person.gender}</TableCell>
-                <TableCell>{person.height}</TableCell>
-                <TableCell>{person.mass}</TableCell>
-                <TableCell>{person.homeworld}</TableCell>
-              {/* </Link> */}
+            <TableRow
+              className={classes.muiTableRow}
+              key={person.name + index}
+              onClick={() => viewDetailsPage(person.name)}
+            >
+              <TableCell component="th" scope="row">
+                {person.name}
+              </TableCell>
+              <TableCell>{person.gender}</TableCell>
+              <TableCell>{person.height}</TableCell>
+              <TableCell>{person.mass}</TableCell>
+              <TableCell>{person.homeworld}</TableCell>
             </TableRow>
           ))}
         </TableBody>

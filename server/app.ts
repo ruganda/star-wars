@@ -6,13 +6,12 @@ import PeopleAPI from "./src/datasource/people";
 
 
 
-const server = new ApolloServer({ 
+const server: ApolloServer = new ApolloServer({ 
   typeDefs,
   dataSources: ()=>({ peopleAPI: new PeopleAPI }),
   resolvers
  });
 
-// The `listen` method launches a web server.
 if (process.env.NODE_ENV !== "test") {
   server.listen().then(({ url }) => {
     console.log(`🚀 Server ready at ${url}`);
